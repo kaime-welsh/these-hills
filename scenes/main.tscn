@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ia7nfsh7aa4"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_s1yv2"]
+[ext_resource type="PackedScene" uid="uid://bb54syd8qei1f" path="res://scenes/message_log.tscn" id="2_xeadg"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_s1yv2")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1026.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageLog" parent="UI/Panel" instance=ExtResource("2_xeadg")]
+layout_mode = 1
+text = ""
+
+[node name="MainCamera" type="Camera2D" parent="."]
+zoom = Vector2(2.75, 2.75)
+
+[node name="World" type="Node" parent="."]
+
+[node name="Tiles" type="Node" parent="World"]
+
+[node name="Entities" type="Node" parent="World"]

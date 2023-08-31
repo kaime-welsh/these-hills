@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=2 format=3 uid="uid://b8uijst6ymboa"]
+
+[ext_resource type="Script" path="res://src/tile_definition.gd" id="1_yfe23"]
+
+[resource]
+script = ExtResource("1_yfe23")
+id = "Empty"
+frame_index = 0
+tint = Color(1, 1, 1, 1)
+layer = -1
+is_solid = false
+is_opaque = false
+is_container = false

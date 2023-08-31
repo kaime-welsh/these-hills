@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=2 format=3 uid="uid://bgdvumhxp4fcv"]
+
+[ext_resource type="Script" path="res://src/tile_definition.gd" id="1_4k5jm"]
+
+[resource]
+script = ExtResource("1_4k5jm")
+id = "Tree"
+frame_index = 50
+tint = Color(0, 0.592157, 0.0666667, 1)
+layer = -1
+is_solid = true
+is_opaque = true
+is_container = false

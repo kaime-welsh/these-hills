@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=2 format=3 uid="uid://dih6j2guxx88v"]
+
+[ext_resource type="Script" path="res://src/tile_definition.gd" id="1_bx2yi"]
+
+[resource]
+script = ExtResource("1_bx2yi")
+id = "Floor"
+frame_index = 4
+tint = Color(0.545098, 0.32549, 0.2, 1)
+layer = -1
+is_solid = false
+is_opaque = false
+is_container = false
