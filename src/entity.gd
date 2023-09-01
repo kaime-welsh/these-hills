@@ -1,6 +1,6 @@
 class_name Entity extends Node
 
-signal took_damage(health: int)
+signal health_changed(health: int)
 signal died(amount: int)
 
 # Private
@@ -32,7 +32,7 @@ func _update_sprite() -> void:
 func _update_data() -> void:
 	name = _data.entity_id
 	id = _data.entity_id
-	health = _data.health
+	max_health = _data.health
 	frame_index = _data.frame_index
 	tint = _data.tint
 	layer = _data.layer
@@ -48,7 +48,11 @@ var position: Vector2 = Vector2.ZERO:
 	set = _set_position,
 	get = _get_position
 
-var health: int
+var health: int:
+	set(value):
+		health = value
+		health_changed.emit(health)
+var max_health: int
 var frame_index: int
 var tint: Color
 var layer: int
@@ -58,6 +62,7 @@ func _init(entity_id: String, at_position: Vector2 = Vector2.ZERO) -> void:
 	_data = Config.entity_definitions[entity_id]
 	
 	_update_data()
+	health = max_health
 	
 	# Create player sprite
 	_sprite = Sprite2D.new()
@@ -71,29 +76,6 @@ func _init(entity_id: String, at_position: Vector2 = Vector2.ZERO) -> void:
 	add_child(_sprite, true)
 	
 	move(at_position)
-
-func hurt(amount: int) -> void:
-	health -= amount
-	took_damage.emit(health)
-
-	if health <= 0:
-		_active = false
-		die()
-
-	else:
-		var tween: Tween = get_tree().create_tween()
-		_sprite.self_modulate = Color.RED
-		tween.tween_property(_sprite, "self_modulate", tint, 0.35)
-
-func die() -> void:
-	id += " corpse"
-	frame_index = 566
-	tint = Color.RED
-	layer = 0
-	_update_sprite()
-	clear_components()
-	Map.get_tile(position).entity = null
-	died.emit()
 
 func set_data(entity_data: String) -> void:
 	_data = Config.entity_definitions[entity_data]
@@ -151,9 +133,47 @@ func move(new_position: Vector2) -> void:
 func hide() -> void:
 	_sprite.visible = false
 	_active = false
+
 func show() -> void:
 	_sprite.visible = true
 	_active = true
+
+func hurt(amount: int) -> void:
+	health -= amount
+
+	if health <= 0:
+		_active = false
+		die()
+
+	else:
+		var tween: Tween = get_tree().create_tween()
+		_sprite.self_modulate = Color.RED
+		tween.tween_property(_sprite, "self_modulate", tint, 0.35)
+
+func die() -> void:
+	Global.event_message.emit("The [color=%s]%s[/color] [color=red]dies![/color]" % [
+		_data.tint.to_html(),
+		id
+	])
+	
+	id += " corpse"
+	frame_index = 566
+	tint = Color.RED
+	layer = 0
+	_update_sprite()
+	clear_components()
+	Map.get_tile(position).entity = null
+	died.emit()
+
+func heal(amount: int) -> void:
+	if health < max_health:
+		Global.event_message.emit("The [color=%s]%s[/color] [color=green]heals %s hp.[/color]" % [
+			_data.tint.to_html(),
+			id,
+			amount
+		])
+		
+		health += amount
 
 func tick() -> void:
 	if !_active:

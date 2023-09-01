@@ -23,6 +23,8 @@ func _ready() -> void:
 	main_camera.position = Rect2(0, 0, Map.size.x - 1, Map.size.y - 1).get_center() * Config.cell_size
 	for i in range(4):
 		spawn_entity("Test", Map.get_random_passable_tile().position)
+	
+	Global.world_ready.emit()
 
 func spawn_entity(entity_id: String, at_position: Vector2 = Vector2.ZERO) -> Entity:
 	var entity: Entity = Entity.new(entity_id, at_position)
