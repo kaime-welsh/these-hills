@@ -1,5 +1,8 @@
 class_name Entity extends Node
 
+signal took_damage(health: int)
+signal died(amount: int)
+
 # Private
 var _data: EntityDefinition
 var _sprite: Sprite2D
@@ -14,7 +17,7 @@ func _set_position(new_position: Vector2) -> void:
 		_sprite,
 		"position",
 		new_position * Config.cell_size,
-		0.05
+		0.075
 	)
 	position = new_position
 
@@ -71,6 +74,7 @@ func _init(entity_id: String, at_position: Vector2 = Vector2.ZERO) -> void:
 
 func hurt(amount: int) -> void:
 	health -= amount
+	took_damage.emit(health)
 
 	if health <= 0:
 		_active = false
@@ -79,7 +83,7 @@ func hurt(amount: int) -> void:
 	else:
 		var tween: Tween = get_tree().create_tween()
 		_sprite.self_modulate = Color.RED
-		tween.tween_property(_sprite, "self_modulate", tint, 0.1)
+		tween.tween_property(_sprite, "self_modulate", tint, 0.35)
 
 func die() -> void:
 	id += " corpse"
@@ -89,6 +93,7 @@ func die() -> void:
 	_update_sprite()
 	clear_components()
 	Map.get_tile(position).entity = null
+	died.emit()
 
 func set_data(entity_data: String) -> void:
 	_data = Config.entity_definitions[entity_data]

@@ -8,4 +8,4 @@ signal add_tile(tile: Tile)
 signal event_message(message: String)
 signal next_turn()
 
-var map: Map
+var player: Entity

@@ -18,6 +18,8 @@ func _ready() -> void:
 	Map.generate_level()
 	
 	player = spawn_entity("Player", Map.get_passable_tiles()[0].position)
+	Global.player = player
+	
 	main_camera.position = Rect2(0, 0, Map.size.x - 1, Map.size.y - 1).get_center() * Config.cell_size
 	for i in range(4):
 		spawn_entity("Test", Map.get_random_passable_tile().position)
