@@ -42,7 +42,6 @@ fit_content = true
 [node name="Tree" type="Tree" parent="Panel/HBoxContainer/Backpack"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 16
 columns = 4
 hide_root = true
 select_mode = 1

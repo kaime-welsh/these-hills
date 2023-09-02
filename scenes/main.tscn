@@ -20,25 +20,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2lne4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+[node name="HSplitContainer" type="HSplitContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+split_offset = -310
 
-[node name="SidePanel" type="VBoxContainer" parent="UI/Control/HBoxContainer"]
+[node name="SidePanel" type="VBoxContainer" parent="UI/Control/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerInfo" parent="UI/Control/HSplitContainer/SidePanel" instance=ExtResource("2_rc7j1")]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="PlayerInfo" parent="UI/Control/HBoxContainer/SidePanel" instance=ExtResource("2_rc7j1")]
-layout_mode = 2
-
-[node name="MessageLog" parent="UI/Control/HBoxContainer/SidePanel" instance=ExtResource("2_xeadg")]
+[node name="MessageLog" parent="UI/Control/HSplitContainer/SidePanel" instance=ExtResource("2_xeadg")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
@@ -46,7 +49,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Backpack" parent="UI/Control/HBoxContainer/MarginContainer" instance=ExtResource("5_lo177")]
+[node name="Backpack" parent="UI/Control/HSplitContainer/MarginContainer" instance=ExtResource("5_lo177")]
 visible = false
 layout_mode = 2
 

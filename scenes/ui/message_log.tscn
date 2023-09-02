@@ -4,7 +4,6 @@
 [ext_resource type="StyleBox" uid="uid://fbpce4om2amh" path="res://scenes/ui/themes/panel.tres" id="1_wmpix"]
 
 [node name="MessageLog" type="MarginContainer"]
-custom_minimum_size = Vector2(300, 400)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,11 +41,6 @@ size_flags_vertical = 3
 
 [node name="TopLabel" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
 text = "[color=yellow][b]Message Log:[/b][/color]"
 fit_content = true
@@ -58,11 +52,6 @@ layout_mode = 2
 [node name="Log" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
 scroll_following = true
 script = ExtResource("1_l37pe")

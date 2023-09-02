@@ -2,8 +2,8 @@ extends Node
 
 @onready var main_camera: Camera2D = $MainCamera
 @onready var ui: CanvasLayer = $UI
-@onready var side_panel: VBoxContainer = $UI/Control/HBoxContainer/SidePanel
-@onready var backpack: Control = $UI/Control/HBoxContainer/MarginContainer/Backpack
+@onready var side_panel: VBoxContainer = $UI/Control/HSplitContainer/SidePanel
+@onready var backpack: Control = $UI/Control/HSplitContainer/MarginContainer/Backpack
 
 @onready var tiles: Node = $World/Tiles
 @onready var entities: Node = $World/Entities
@@ -26,7 +26,6 @@ func setup_game() -> void:
 	player = spawn_entity("Player", Map.get_passable_tiles()[0].position)
 	player.died.connect(player_died)
 	
-	player.add_item(Item.new("ShortSword"))
 	player.add_item(Item.new("ShortSword"))
 	
 	Global.player = player

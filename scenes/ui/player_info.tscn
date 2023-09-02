@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://src/ui/inventory.gd" id="3_w6kbu"]
 
 [node name="PlayerInfo" type="MarginContainer"]
-custom_minimum_size = Vector2(324, 300)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,7 +35,6 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 
 [node name="HP" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 fit_content = true
 scroll_active = false
@@ -45,14 +43,9 @@ script = ExtResource("1_uhehe")
 [node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="Inventory" type="Tree" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 16
 columns = 3
 allow_search = false
 hide_root = true
