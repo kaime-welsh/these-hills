@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb54syd8qei1f"]
+
+[ext_resource type="Script" path="res://src/ui/message_log.gd" id="1_l37pe"]
+[ext_resource type="StyleBox" uid="uid://fbpce4om2amh" path="res://scenes/ui/themes/panel.tres" id="1_wmpix"]
+
+[node name="MessageLog" type="MarginContainer"]
+custom_minimum_size = Vector2(300, 400)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_wmpix")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopLabel" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+bbcode_enabled = true
+text = "[color=yellow][b]Message Log:[/b][/color]"
+fit_content = true
+scroll_active = false
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Log" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("1_l37pe")

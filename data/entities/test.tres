@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="EntityDefinition" load_steps=2 format=3 uid="uid://plxuy6olpiva"]
 
-[ext_resource type="Script" path="res://src/entity_definition.gd" id="1_n8e8p"]
+[ext_resource type="Script" path="res://src/resources/entity_definition.gd" id="1_n8e8p"]
 
 [resource]
 script = ExtResource("1_n8e8p")
-entity_id = "Test"
-health = 3
+entity_id = "Skinwalker"
 frame_index = 123
-tint = Color(0, 1, 0, 1)
+tint = Color(0.921569, 0.776471, 0.898039, 1)
 layer = 2
+strength = 2
+dexterity = 0
+constitution = 5
 bump_action_type = "Attack"
 component_list = {
 "RandomMover": {}

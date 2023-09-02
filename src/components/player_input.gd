@@ -10,29 +10,20 @@ var commands: Dictionary = {
 	"move_down_left" = func(): entity.try_move(Vector2(-1, 1)),
 	"move_down_right" = func(): entity.try_move(Vector2(1, 1)),
 	"wait" = func(): entity.heal(1),
+	"pick_up" = func(): entity.get_component("inventory").pick_up(),
 }
 
 func _init(parent_entity: Entity, parameters: Dictionary) -> void:
 	super(parent_entity, parameters)
 
 func _input(event: InputEvent) -> void:
+	if Global.paused:
+		return
+	
 	if !event is InputEventKey:
 		return
 	
 	for command in commands:
 		if event.is_action_pressed(command, true):
 			commands[command].call()
-			Global.next_turn.emit()
-	
-	#if event.is_action_pressed("move_left", true):
-	#	entity.try_move(Vector2(-1, 0))
-	#	Global.next_turn.emit()
-	#if event.is_action_pressed("move_right", true):
-	#	entity.try_move(Vector2(1, 0))
-	#	Global.next_turn.emit()
-	#if event.is_action_pressed("move_up", true):
-	#	entity.try_move(Vector2(0, -1))
-	#	Global.next_turn.emit()
-	#if event.is_action_pressed("move_down", true):
-	#	entity.try_move(Vector2(0, 1))
-	#	Global.next_turn.emit()
+			Global.tick.emit()

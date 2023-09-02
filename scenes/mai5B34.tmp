@@ -20,33 +20,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2lne4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+[node name="SidePanel" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = -943.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.793415, 0.793415)
+
+[node name="PlayerInfo" parent="UI/Control/SidePanel" instance=ExtResource("2_rc7j1")]
+layout_mode = 2
+
+[node name="MessageLog" parent="UI/Control/SidePanel" instance=ExtResource("2_xeadg")]
+layout_mode = 2
+
+[node name="FullScreen" type="MarginContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="SidePanel" type="VBoxContainer" parent="UI/Control/HBoxContainer"]
-layout_mode = 2
-
-[node name="PlayerInfo" parent="UI/Control/HBoxContainer/SidePanel" instance=ExtResource("2_rc7j1")]
-layout_mode = 2
-
-[node name="MessageLog" parent="UI/Control/HBoxContainer/SidePanel" instance=ExtResource("2_xeadg")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Backpack" parent="UI/Control/HBoxContainer/MarginContainer" instance=ExtResource("5_lo177")]
+[node name="Backpack" parent="UI/Control/FullScreen" instance=ExtResource("5_lo177")]
 visible = false
 layout_mode = 2
 

@@ -20,7 +20,7 @@ var tile_definitions: Dictionary = {
 }
 
 var item_definitions: Dictionary = {
-	
+	"ShortSword": preload("res://data/items/sword.tres"),
 }
 
 var actions: Dictionary = {

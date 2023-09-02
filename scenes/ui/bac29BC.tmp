@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3 uid="uid://cy1yil8l03j1q"]
+
+[ext_resource type="Script" path="res://src/ui/backpack_screen.gd" id="1_vg67i"]
+[ext_resource type="Texture2D" uid="uid://daddx1tgx7kxu" path="res://data/images/monochrome-transparent_packed.png" id="2_jrx77"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m71x"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(608, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q2um"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(657, 21, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc3xj"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(594, 18, 13, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7fke"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(664, 17, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjvke"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(388, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md6fa"]
+atlas = ExtResource("2_jrx77")
+region = Rect2(640, 16, 16, 16)
+
+[node name="Backpack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vg67i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Equiped" type="Panel" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(364, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer/Equiped"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Equiped/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Head" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_8m71x")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftHand" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_4q2um")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Body" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_vc3xj")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="RightHand" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_x7fke")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Legs" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_mjvke")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Feet" type="TextureButton" parent="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_md6fa")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Backpack" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="RichTextLabel" parent="Panel/HBoxContainer/Backpack"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[bgcolor=white][color=black]BACKPACK[/color][/bgcolor]"
+fit_content = true
+
+[node name="Tree" type="Tree" parent="Panel/HBoxContainer/Backpack"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+hide_root = true
+select_mode = 1
+
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/Head" to="." method="_on_head_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer/LeftHand" to="." method="_on_left_hand_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer/Body" to="." method="_on_body_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/HBoxContainer/RightHand" to="." method="_on_right_hand_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/Legs" to="." method="_on_legs_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Equiped/CenterContainer/VBoxContainer/Feet" to="." method="_on_feet_pressed"]
+[connection signal="button_clicked" from="Panel/HBoxContainer/Backpack/Tree" to="." method="_on_tree_button_clicked"]

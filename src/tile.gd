@@ -36,6 +36,9 @@ var has_entity: bool:
 var entity: Entity
 
 func _init(tile_id: String, at_position: Vector2 = Vector2.ZERO) -> void:
+	# Connect signals
+	
+	
 	# Store data
 	_data = Config.tile_definitions[tile_id]
 	name = _data.id

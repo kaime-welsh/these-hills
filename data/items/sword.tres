@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3 uid="uid://drobkx7ssa3e6"]
+
+[ext_resource type="Script" path="res://src/resources/item_definition.gd" id="1_fyrol"]
+[ext_resource type="Texture2D" uid="uid://daddx1tgx7kxu" path="res://data/images/monochrome-transparent_packed.png" id="1_qu3ra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ym6"]
+atlas = ExtResource("1_qu3ra")
+region = Rect2(544, 96, 16, 16)
+
+[resource]
+script = ExtResource("1_fyrol")
+id = "Sword"
+description = "A short sword made of iron. +1 STR"
+icon = SubResource("AtlasTexture_k8ym6")
+can_equip = true
+slot = "hands"
+is_weapon = true
+damage = 1
+is_armor = false
+defense = 0

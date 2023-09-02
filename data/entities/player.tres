@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="EntityDefinition" load_steps=2 format=3 uid="uid://b5s6110xdn5n8"]
 
-[ext_resource type="Script" path="res://src/entity_definition.gd" id="1_latec"]
+[ext_resource type="Script" path="res://src/resources/entity_definition.gd" id="1_latec"]
 
 [resource]
 script = ExtResource("1_latec")
 entity_id = "Player"
-health = 5
 frame_index = 25
 tint = Color(1, 1, 1, 1)
 layer = 3
+strength = 3
+dexterity = 1
+constitution = 5
 bump_action_type = "Attack"
 component_list = {
 "PlayerInput": {}
